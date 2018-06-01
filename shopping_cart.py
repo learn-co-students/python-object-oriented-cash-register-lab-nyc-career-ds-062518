@@ -1,4 +1,4 @@
-class CashRegister:
+class ShoppingCart:
 
     def __init__(self, emp_discount=None):
         self._total = 0
@@ -38,10 +38,6 @@ class CashRegister:
             self.total += price
         return self.total
 
-    def item_names(self):
-        names = [self.get_attr(item, "name") for item in self.items]
-        return names
-
     def mean_item_price(self):
         num_items = len(self.items)
         total = self.total
@@ -73,3 +69,14 @@ class CashRegister:
 
     def get_attr(self, item, attr):
         return item[attr]
+
+    def item_names(self):
+        names = [self.get_attr(item, "name") for item in self.items]
+        return names
+
+    def void_last_item(self):
+        if self.items:
+            removed_item = self.items.pop()
+        else:
+            return "There are no items in your cart!"
+        self.total -= removed_item['price']
