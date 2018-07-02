@@ -1,4 +1,6 @@
 import unittest2 as unittest
+import sys
+sys.path.insert(0, '..')
 from ipynb.fs.full.index import *
 
 class TestObjectAttributes(unittest.TestCase):
