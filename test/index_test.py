@@ -1,3 +1,4 @@
+import pdb
 import unittest2 as unittest
 from ipynb.fs.full.index import *
 
@@ -69,11 +70,17 @@ class TestObjectAttributes(unittest.TestCase):
         self.assertEqual(example_shc.total, 100)
 
     def test_void_last_item_method(self):
+        #pdb.set_trace()
         example_shc_void_last_item = ShoppingCart()
         example_shc_void_last_item.add_item("ice cream", 5.00)
         example_shc_void_last_item.add_item("cereal", 10.00)
         example_shc_void_last_item.add_item("OJ", 4.00, 2)
+        example_shc_void_last_item.items
         example_shc_void_last_item.void_last_item()
+        length = len(example_shc_void_last_item.items)
+        #print(example_shc_void_last_item.items)
+        #pdb.set_trace()
+        self.assertEqual(length, 3)
         self.assertEqual(len(example_shc_void_last_item.items), 3)
         self.assertEqual(example_shc_void_last_item.total, 19.0)
         while example_shc_void_last_item.items:
